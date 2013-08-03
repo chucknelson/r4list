@@ -8,7 +8,19 @@
 </head>
 <body>
 
-<%= yield %>
+	<div id="main-container">
+
+		<div id="header-container">
+			<%= render 'shared/flash' %>
+		</div>
+
+		<%= render 'shared/login_items' %>
+		
+		<div id="content-container" style="margin: 0; padding: 0; float: left;">
+			<%= yield %>
+		</div>
+
+	</div>
 
 </body>
 </html>

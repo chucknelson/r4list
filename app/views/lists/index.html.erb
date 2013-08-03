@@ -1,10 +1,6 @@
 <h1>All Lists</h1>
 
-<%= render 'shared/flash' %>
-
-<%= link_to 'Create a New List', new_user_list_path(@user) %>
-
-<table>
+<table id="your-lists">
 	<tr>
 		<th>Title</th>
 		<th>Description</th>
@@ -18,6 +14,7 @@
 	<% end %>
 </table>
 
-<%= link_to 'Back', root_path %>
+<p><%= link_to 'Create a New List', new_user_list_path(@user) %></p>
+<p><%= link_to 'Back', root_path %></p>
 
 

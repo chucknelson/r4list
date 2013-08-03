@@ -1,3 +1,44 @@
 // Place all the styles related to the Items controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+$item-height: 3em;
+
+ul#list-items {
+	list-style: none;
+	padding-left: 0;
+
+	li {
+		height: $item-height;	
+		width: 40em;
+		border-bottom: 1px solid #ddd;
+		&:first-child { border-top: 1px solid #ddd; }
+		
+		a { 
+			text-decoration: none; 
+		}
+
+		span {
+			display: inline-block;
+			line-height: $item-height;
+			vertical-align: middle;
+		}
+
+		.item-link-container {
+			width: 100%;
+			//background-color: red;
+		}
+
+		.item-link {
+			float:left; 
+			//background-color: red;
+		}
+
+		.item-delete-link {
+			float: right;
+			margin-left: 2em;
+		}
+	}
+
+
+}

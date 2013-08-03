@@ -1,23 +1,18 @@
-<%= render 'shared/flash' %>
+<div id="list-container">
 
-<p>
-	<strong>Title:</strong>
-	<%= @list.title %>
-</p>
+	<h1><%= @list.title %></h1>
+	<!-- <p><%= @list.description %></p> -->
 
-<p>
-	<strong>Description:</strong>
-	<%= @list.description %>
-</p>
+	<h2>Items:</h2>
+	<%= render 'items/items' %>
+	<%= link_to 'Mark All Items as Complete', user_list_complete_all_path(@user, @list), method: :patch, data: { confirm: 'Are you sure?' } %>
 
-<h2>Items:</h2>
-<%= render 'items/items' %>
-<%= link_to 'Mark All Items as Complete', user_list_complete_all_path(@user, @list), method: :patch, data: { confirm: 'Are you sure?' } %>
+	<h2>Add an Item:</h2>
+	<%= render 'items/form' %>
 
-<h2>Add an Item:</h2>
-<%= render 'items/form' %>
+	<%= link_to 'Edit List', edit_user_list_path(@user, @list) %> | 
+	<%= link_to 'Delete List', user_list_path(@user, @list), method: :delete, data: { confirm: 'Are you sure?' } %>
+	
+	<p><%= link_to 'Back', user_lists_path(@user) %></p>
 
-<%= link_to 'Edit List', edit_user_list_path(@user, @list) %>
-<%= link_to 'Delete List', user_list_path(@user, @list), method: :delete, data: { confirm: 'Are you sure?' } %>
-
-<%= link_to 'Back', user_lists_path(@user) %>
+</div>

@@ -1,0 +1,9 @@
+<li>
+	<%= item.name %> |
+	<%= item.status %> |
+
+
+	<%= link_to 'Toggle', user_list_item_path(item.list.user_id, item.list, item, :item => { :completed => !item.completed }), method: :patch  %> |
+
+	<%= link_to 'Delete', user_list_item_path(item.list.user_id, item.list, item), method: :delete, data: { confirm:'Are you sure?' } %>
+</li>

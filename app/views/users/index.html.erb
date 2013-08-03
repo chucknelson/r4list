@@ -1,0 +1,21 @@
+<h1>All Users</h1>
+
+<%= link_to 'Create a New User', new_user_path %>
+
+<table>
+	<tr>
+		<th>User Name</th>
+		<th>Email Address</th>
+	</tr>
+
+	<% @users.each do |user| %>
+		<tr>
+			<td><%= link_to user.name, user_path(user) %></td>
+			<td><%= user.email %></td>
+		</tr>
+	<% end %>
+</table>
+
+<%= link_to 'Back', root_path %>
+
+

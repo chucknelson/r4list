@@ -1,0 +1,23 @@
+<h1>All Lists</h1>
+
+<%= render 'shared/flash' %>
+
+<%= link_to 'Create a New List', new_user_list_path(@user) %>
+
+<table>
+	<tr>
+		<th>Title</th>
+		<th>Description</th>
+	</tr>
+
+	<% @lists.each do |list| %>
+		<tr>
+			<td><%= link_to list.title, user_list_path(@user, list) %></td>
+			<td><%= list.description %></td>
+		</tr>
+	<% end %>
+</table>
+
+<%= link_to 'Back', root_path %>
+
+

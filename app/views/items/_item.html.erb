@@ -1,5 +1,5 @@
 <li data-item-id="<%=h item.id %>">		
-	<%= link_to user_list_item_path(@user, @list, item, :item => { :completed => !item.completed }), :method => :patch, :class => 'item-link', :remote => true do %>
+	<%= link_to '#', :data => { :ajax_route => user_list_item_path(@user, @list, item, :item => { :completed => !item.completed }) }, :class => 'item-link' do %>
 		<span>
 			<%= item.name %> | 
 			<%= item.status %>

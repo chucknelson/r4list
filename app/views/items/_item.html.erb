@@ -1,13 +1,15 @@
 <li>
 	<span class="item-link-container">		
-		<%= link_to user_list_item_path(@user, @list, item, :item => { :completed => !item.completed }), method: :patch  do %>
+		<%= link_to user_list_item_path(@user, @list, item, :item => { :completed => !item.completed }), :data => { :magic => 'some magic' }, method: :patch  do %>
 			<span class="item-link">
 				<%= item.name %> | 
 				<%= item.status %>
 			</span>
 		<% end %>		
-		<span class="item-delete-link">
-			<%= link_to '(delete)', user_list_item_path(@user, @list, item), method: :delete, data: { confirm:'Are you sure?' } %>
-		</span>
+		<%= link_to user_list_item_path(@user, @list, item), method: :delete, data: { confirm:'Are you sure?' } do %>
+			<span class="item-delete-link">
+				(delete)
+			</span>
+		<% end %>
 	</span>
 </li>

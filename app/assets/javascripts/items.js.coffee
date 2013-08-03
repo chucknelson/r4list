@@ -4,3 +4,8 @@
 
 jQuery ->
 	#alert($().jquery)
+
+jQuery ->
+	$('.item-link').on('click', (event) ->
+		#alert('clicked!')
+	)

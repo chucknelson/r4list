@@ -5,9 +5,8 @@
 
 	<h2>Items:</h2>
 	<%= render 'items/items' %>
-	<%= link_to 'Mark All Items as Complete', user_list_complete_all_path(@user, @list), method: :patch, data: { confirm: 'Are you sure?' } %>
+	<%= link_to 'Mark All Items as Complete', user_list_complete_all_path(@user, @list), method: :patch, data: { confirm: 'Are you sure?' }, :class => 'link-button' %>
 
-	<h2>Add an Item:</h2>
 	<%= render 'items/form' %>
 
 	<%= link_to 'Edit List', edit_user_list_path(@user, @list) %> | 

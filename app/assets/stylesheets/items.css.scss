@@ -9,12 +9,12 @@ ul#list-items {
 	padding-left: 0;
 
 	li {
-		height: $item-height;	
-		width: 40em;
+		height: $item-height;			
 		border-bottom: 1px solid #ddd;
 		&:first-child { border-top: 1px solid #ddd; }
 		
 		a { 
+			color: #000;
 			text-decoration: none; 
 		}
 
@@ -36,9 +36,13 @@ ul#list-items {
 
 		.item-delete-link {
 			float: right;
-			margin-left: 2em;
+			color: red;
 		}
 	}
 
 
+}
+
+#new-item {
+	margin: 1.5em 0;
 }

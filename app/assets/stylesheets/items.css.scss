@@ -7,13 +7,14 @@ ul#list-items {
 	padding-left: 0;
 
 	li {
-		height: 3em;
+		
 		border-bottom: 1px solid #ddd;
 		&:first-child { border-top: 1px solid #ddd; }
 		
 		a { 
 			display: table-cell;
-			height: inherit;
+			height: 3em; //with table-cell display, acts like min-height
+			padding: .5em 0; //for use when cell height has to expand beyond 3em and it gets crowded
 			box-sizing: border-box;
 			vertical-align: middle;
 			color: #000;

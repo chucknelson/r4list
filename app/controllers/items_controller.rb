@@ -1,4 +1,5 @@
 class ItemsController < ApplicationController
+	before_action :authenticate_user
 
 	#items are nested resources of lists, which are nestes resources of users
 
@@ -7,7 +8,7 @@ class ItemsController < ApplicationController
 		@list = @user.lists.find(params[:list_id])
 		@item = @list.items.create(item_params)
 
-		redirect_to user_list_path(@user, @list)
+		redirect_to user_list_path(@user, @list, :item_focus => true)
 	end
 
 	def update
@@ -15,10 +16,13 @@ class ItemsController < ApplicationController
 		@list = @user.lists.find(params[:list_id])
 		@item = @list.items.find(params[:id])
 
-		if @item.update(item_params)
-			redirect_to user_list_path(@user, @list)
-		else
-			redirect_to user_list_path(@user, @list), alert: 'Item failed to update'
+		respond_to do |format|
+			if @item.update(item_params)
+				format.html {redirect_to user_list_path(@user, @list) }
+				format.js { } #js response does the work
+			else
+				redirect_to user_list_path(@user, @list), alert: 'Item failed to update'
+			end
 		end
 	end
 

@@ -1,7 +1,7 @@
 <div id="new-item">
 	<%= form_for [@user, @list, @list.items.build] do |f| %>
 		<span>
-			New Item: <%= f.text_field :name %>
+			New Item: <%= f.text_field :name, :autofocus => @item_focus %>
 		</span>
 		<span>
 			<%= f.submit %>

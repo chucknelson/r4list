@@ -2,45 +2,33 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-$item-height: 3em;
-
 ul#list-items {
 	list-style: none;
 	padding-left: 0;
 
 	li {
-		height: $item-height;			
+		height: 3em;
 		border-bottom: 1px solid #ddd;
 		&:first-child { border-top: 1px solid #ddd; }
 		
 		a { 
+			display: table-cell;
+			height: inherit;
+			box-sizing: border-box;
+			vertical-align: middle;
 			color: #000;
 			text-decoration: none; 
 		}
 
-		span {
-			display: inline-block;
-			line-height: $item-height;
-			vertical-align: middle;
-		}
-
-		.item-link-container {
-			width: 100%;
-			//background-color: red;
-		}
-
 		.item-link {
-			float:left; 
-			//background-color: red;
+			width: 100%;
+			padding-right: 1em;
 		}
 
 		.item-delete-link {
-			float: right;
 			color: red;
 		}
 	}
-
-
 }
 
 #new-item {

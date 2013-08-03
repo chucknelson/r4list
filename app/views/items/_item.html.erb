@@ -1,15 +1,10 @@
-<li>
-	<span class="item-link-container">		
-		<%= link_to user_list_item_path(@user, @list, item, :item => { :completed => !item.completed }), :data => { :magic => 'some magic' }, method: :patch  do %>
-			<span class="item-link">
-				<%= item.name %> | 
-				<%= item.status %>
-			</span>
-		<% end %>		
-		<%= link_to user_list_item_path(@user, @list, item), method: :delete, data: { confirm:'Are you sure?' } do %>
-			<span class="item-delete-link">
-				(delete)
-			</span>
-		<% end %>
-	</span>
+<li data-item-id="<%=h item.id %>">		
+	<%= link_to user_list_item_path(@user, @list, item, :item => { :completed => !item.completed }), :method => :patch, :class => 'item-link', :remote => true do %>
+		<span>
+			<%= item.name %> | 
+			<%= item.status %>
+		</span>
+	<% end %>
+
+	<%= link_to '(delete)', user_list_item_path(@user, @list, item), method: :delete, data: { confirm:'Are you sure?' }, :class => 'item-delete-link' %>
 </li>

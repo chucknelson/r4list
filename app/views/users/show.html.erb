@@ -1,8 +1,14 @@
+<h1>User Details</h1>
+
 <p>
 	<strong>User:</strong>
-	<%= @user.name %> | <%= @user.email %>
+	<%= @user.name %>
 </p>
 
-<%= link_to 'Delete User', user_path(@user), method: :delete, data: { confirm: 'Are you sure?' } %>
+<p>
+	<strong>Email:</strong>
+	<%= @user.email %>
+</p>
 
-<%= link_to 'Back', users_path %>
+<p><%= link_to 'Delete User', user_path(@user), method: :delete, data: { confirm: 'Are you sure?' } %></p>
+<p><%= link_to 'Back', users_path %></p>

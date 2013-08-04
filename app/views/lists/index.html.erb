@@ -1,20 +1,23 @@
-<h1>All Lists</h1>
+<div class="list-container">
 
-<table id="your-lists">
-	<tr>
-		<th>Title</th>
-		<th>Description</th>
-	</tr>
+	<h1>Your Lists</h1>
 
-	<% @lists.each do |list| %>
-		<tr>
-			<td><%= link_to list.title, user_list_path(@user, list) %></td>
-			<td><%= list.description %></td>
-		</tr>
+	<% if !@user.lists.empty? %>
+		<ul>
+			<% @user.lists.each do |list| %>
+				<li data-list-id="<%=h list.id %>">		
+					<%= link_to user_list_path(@user, list), :class => 'item-link' do %>
+						<span>
+							<%= list.title %>
+							<!-- <%= list.description %> -->
+						</span>
+					<% end %>
+				</li>
+			<% end %>
+		</ul>
 	<% end %>
-</table>
 
-<p><%= link_to 'Create a New List', new_user_list_path(@user) %></p>
-<p><%= link_to 'Back', root_path %></p>
-
+	<p><%= link_to 'Create a New List', new_user_list_path(@user) %></p>
+	<p><%= link_to 'Back', root_path %></p>
+</div>
 

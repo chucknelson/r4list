@@ -4,12 +4,18 @@
 
 #custom item events because :remote => true in rails causes the address bar show up on iOS (annoying!)
 jQuery ->
-	$('#list-items').on('click', '.item-link', (event) ->
+	$('ul#list-items').on('click', '.item-link', (event) ->
 		event.preventDefault()
 
 		$.ajax(
-			url: $(this).data('ajax-route'),
+			url: $(this).data('ajax-route'), #items/update
 			type: 'PATCH',
 			dataType: 'script'
+		)
+		.done( ->
+			#alert('ajax done!')
+		)
+		.fail( ->
+			#alert('ajax failed!')
 		)
 	)

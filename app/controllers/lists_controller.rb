@@ -13,6 +13,7 @@ class ListsController < ApplicationController
 	def show
 		@user = User.find(params[:user_id])
 		@list = @user.lists.find(params[:id])
+		@items = @list.items.order(:sort_order, :id) #default sort
 
 		@item_focus = params[:item_focus]
 	end
@@ -67,6 +68,25 @@ class ListsController < ApplicationController
 		@list.items.update_all(:completed => true) #uh, this doesn't validate - bad?
 
 		redirect_to user_list_path(@user, @list)
+	end
+
+	def sort
+		@user = User.find(params[:user_id])
+		@list = @user.lists.find(params[:list_id])
+		@item_sort = params[:sort]
+
+		#update item sort_order if changed
+		@list.items.each do |item|					
+			new_sort_order = @item_sort[item.id.to_s].to_i #is there a way to avoid all of this type conversion?	
+			#only update if changed
+			if item.sort_order != new_sort_order
+				item.update(:sort_order => new_sort_order)
+			end
+		end
+
+		respond_to do |format|
+			format.js { }
+		end
 	end
 
 	private

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20130730180854) do
+ActiveRecord::Schema.define(version: 20130805234033) do
 
   create_table "items", force: true do |t|
     t.string   "name"
@@ -19,6 +19,7 @@ ActiveRecord::Schema.define(version: 20130730180854) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.boolean  "completed",  default: false, null: false
+    t.integer  "sort_order"
   end
 
   add_index "items", ["list_id"], name: "index_items_on_list_id"

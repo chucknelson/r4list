@@ -3,6 +3,7 @@
 # You can use CoffeeScript in this file: http://coffeescript.org/
 
 #custom item events because :remote => true in rails causes the address bar show up on iOS (annoying!)
+#NOTE - should this be how I bind events w/ turbolinks, or should I be doing something different?
 jQuery ->
 	$('ul#list-items').on('click', '.item-link', (event) ->
 		event.preventDefault()

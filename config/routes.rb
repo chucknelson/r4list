@@ -7,6 +7,7 @@ R4list::Application.routes.draw do
     resources :lists do
       resources :items
       patch 'complete_all'
+      patch 'sort'
     end
   end
   get 'signup', to: 'users#new'

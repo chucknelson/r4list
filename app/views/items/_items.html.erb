@@ -1,7 +1,7 @@
 <h2>Items</h2>
 
-<ul id="list-items">
-	<% @list.items.each do |item| %>
+<ul id="list-items" data-ajax-sort-route="<%= user_list_sort_path(@user, @list) %>">
+	<% @items.each do |item| %>
 		<%= render item %>
 	<% end %>
 </ul>

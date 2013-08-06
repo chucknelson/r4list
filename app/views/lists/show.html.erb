@@ -3,7 +3,7 @@
 	<h1><%= @list.title %></h1>
 	<!-- <p><%= @list.description %></p> -->
 
-	<% if !@list.items.empty? %>
+	<% if !@items.empty? %>
 		<%= render 'items/items' %>
 		<%= link_to 'Mark All Items as Complete', user_list_complete_all_path(@user, @list), method: :patch, data: { confirm: 'Are you sure?' }, :class => 'link-button' %> 
 	<% end %>

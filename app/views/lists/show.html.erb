@@ -1,18 +1,22 @@
-<div class="list-container">
-
-	<h1><%= @list.title %></h1>
+<h1><%= @list.title %></h1>
 	<!-- <p><%= @list.description %></p> -->
 
-	<% if !@items.empty? %>
+<div id="list-container">
+
+	<div id="list-header">
+		<h2>Items</h2>
+	</div>
+
+	<div id="list-body">
 		<%= render 'items/items' %>
-		<%= link_to 'Mark All Items as Complete', user_list_complete_all_path(@user, @list), method: :patch, data: { confirm: 'Are you sure?' }, :class => 'link-button' %> 
-	<% end %>
+		<% #<%= link_to 'Mark All Items as Complete', user_list_complete_all_path(@user, @list), method: :patch, data: { confirm: 'Are you sure?' }, :class => 'link-button' %> 
+	</div>
 
-	<%= render 'items/form' %>
+	<div id="list-footer">
+		<%= link_to 'Edit List', edit_user_list_path(@user, @list) %> | 
+		<%= link_to 'Delete List', user_list_path(@user, @list), method: :delete, data: { confirm: 'Are you sure?' } %>
 
-	<%= link_to 'Edit List', edit_user_list_path(@user, @list) %> | 
-	<%= link_to 'Delete List', user_list_path(@user, @list), method: :delete, data: { confirm: 'Are you sure?' } %>
+		<p><%= link_to 'Back', user_lists_path(@user) %></p>
+	</div>
 	
-	<p><%= link_to 'Back', user_lists_path(@user) %></p>
-
 </div>

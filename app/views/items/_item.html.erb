@@ -1,10 +1,5 @@
-<li data-item-id="<%=h item.id %>">		
-	<%= link_to '#', :data => { :ajax_route => user_list_item_path(@user, @list, item, :item => { :completed => !item.completed }) }, :class => 'item-link' do %>
-		<span>
-			<%= item.name %> | 
-			<%= item.status %>
-		</span>
-	<% end %>
+<li data-item-id="<%=h item.id %>" class="<%= 'flipped' if item.completed %>">		
+	<%= link_to item.name, '#', :data => { :ajax_route => user_list_item_path(@user, @list, item, :item => { :completed => !item.completed }) }, :class => 'item-link' %>
 
 	<%= link_to '(delete)', user_list_item_path(@user, @list, item), method: :delete, data: { confirm:'Are you sure?' }, :class => 'item-delete-link' %>
 </li>

@@ -1,10 +1,10 @@
-<div id="new-item">
+<li id="new-item">
 	<%= form_for [@user, @list, @list.items.build] do |f| %>
 		<span>
-			New Item: <%= f.text_field :name, :autofocus => @item_focus %>
+			<%= f.text_field :name, :autofocus => @item_focus %>
 		</span>
 		<span>
-			<%= f.submit %>
+			<%= f.submit 'Add Item' %>
 		</span>
 	<% end %>
-</div>
+</li>

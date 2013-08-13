@@ -1,7 +1,11 @@
-<h2>Items</h2>
-
 <ul id="list-items" data-ajax-sort-route="<%= user_list_sort_path(@user, @list) %>">
-	<% @items.each do |item| %>
-		<%= render item %>
+	<% if !@items.empty? %>
+		<% @items.each do |item| %>
+			<%= render item %>
+		<% end %>
 	<% end %>
+
+	<%= render 'items/form' %>
 </ul>
+
+<!-- <%= render 'items/new_item_placeholder' %> -->

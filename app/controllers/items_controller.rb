@@ -3,6 +3,17 @@ class ItemsController < ApplicationController
 
 	#items are nested resources of lists, which are nestes resources of users
 
+	def new
+		@user = User.find(params[:user_id])
+		@list = @user.lists.find(params[:list_id])
+		
+		respond_to do |format|
+			format.html {redirect_to user_list_path(@user, @list) }
+			format.js { } #js response does the work
+		end
+	end
+
+
 	def create
 		@user = User.find(params[:user_id])
 		@list = @user.lists.find(params[:list_id])

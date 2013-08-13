@@ -1,5 +1,14 @@
 <h1>Rails 4 Lists</h1>
-<p>This is a simple list application built on Rails 4.</p>
 
-<p><%= link_to 'Your Lists', lists_path  %></p>
-<p><%= link_to 'All Users', users_path %></p>
+<div id="generic-view-container">
+	<p>This is a simple list application built on Rails 4.</p>
+
+	<% if mobile_device? %>
+		<p>You are on a mobile device.</p>
+	<% else %>
+		<p>You are not on a mobile device.</p>
+	<% end %>
+
+	<p><%= link_to 'Your Lists', lists_path  %></p>
+	<p><%= link_to 'All Users', users_path %></p>
+</div>

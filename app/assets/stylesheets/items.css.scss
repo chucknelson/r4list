@@ -3,5 +3,107 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
 #new-item {
-	margin: 1.5em 0;
+
+	background-color: #ccc;
+	form {
+		input[type=text] {
+			width: 100%;
+		}
+		input[type=submit] {
+			margin-top: .5em;
+		}
+	}
+
+}
+
+#new-item-placeholder {
+	min-height: 1.5em;
+	margin-bottom: 2em;
+	padding-left: .5em;
+	background-color: #eee;
+
+	a {
+		display: inline-block;
+		width: 100%;
+		padding: .5em 0;
+		color: #000;
+		text-decoration: none;
+	}
+
+	&:hover {
+		background-color: #dddF;
+	}
+}
+
+.animated {
+    -webkit-transition: 0.4s;
+}
+
+#list-body {
+	ul {
+		li {
+			.item-link {
+				width: 80%;
+				padding-right: .5em;
+			}
+
+			.item-delete-link {
+				width: 20%;
+				text-align: right;
+				color: red;
+			}
+
+			&.sorting-item { 
+				display: block;
+				background-color: #fff;
+				border-top: 1px solid #ddd; 
+				border-bottom: 1px solid #ddd; 
+			}
+
+			&.ui-sortable-placeholder {
+				visibility: visible !important;
+				background-color: #efefef !important;
+				//border-top: 1px solid #ddd !important; 
+				border-bottom: 1px solid #ddd !important;
+			}
+
+			// flip disabled while I investigate options
+			&.flipped {
+				background-color: #555;
+				border-top: 1px solid;
+				border-color: #333;
+
+				-webkit-transform: rotateX(180deg);
+
+				&:not(:first-child) { 
+					border-bottom: none;
+				}
+
+				&.ui-sortable-placeholder {
+					border-top: 1px solid #ddd !important; 
+					border-bottom: none !important;
+				}
+
+				a { 
+					//font-size: .75em;
+					text-decoration: line-through;
+
+					//keep the text right-side up when flipped
+					//scaleY does NOT cause performance issues on iOS like rotateX does here
+					-webkit-transform: scaleY(-1) translateZ(1px);
+				}
+
+				a.item-link {
+					color: #ccc;
+				}
+
+				a.item-delete-link
+				{
+					color: #f77;
+					text-decoration: none;
+					//display: none;
+				}
+			}
+		}
+	}
 }

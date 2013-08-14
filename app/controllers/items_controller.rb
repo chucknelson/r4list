@@ -17,7 +17,7 @@ class ItemsController < ApplicationController
 	def create
 		@user = User.find(params[:user_id])
 		@list = @user.lists.find(params[:list_id])
-		@item = @list.items.create(item_params)
+		@item = @list.items.create(item_params.merge(:sort_order => (@list.items.maximum(:sort_order) || -1) + 1))
 
 		redirect_to user_list_path(@user, @list, :item_focus => true)
 	end

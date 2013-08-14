@@ -2,39 +2,6 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-#new-item {
-
-	background-color: #ccc;
-	form {
-		input[type=text] {
-			width: 100%;
-		}
-		input[type=submit] {
-			margin-top: .5em;
-		}
-	}
-
-}
-
-#new-item-placeholder {
-	min-height: 1.5em;
-	margin-bottom: 2em;
-	padding-left: .5em;
-	background-color: #eee;
-
-	a {
-		display: inline-block;
-		width: 100%;
-		padding: .5em 0;
-		color: #000;
-		text-decoration: none;
-	}
-
-	&:hover {
-		background-color: #dddF;
-	}
-}
-
 .animated {
     -webkit-transition: 0.4s;
 }
@@ -42,6 +9,18 @@
 #list-body {
 	ul {
 		li {
+			&#new-item {
+				background-color: #ccc;
+				form {
+					input[type=text] {
+						width: 100%;
+					}
+					input[type=submit] {
+						margin-top: .5em;
+					}
+				}
+			}
+			
 			.item-link {
 				width: 80%;
 				padding-right: .5em;

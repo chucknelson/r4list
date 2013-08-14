@@ -23,6 +23,13 @@
 	</p>
 
 	<p>
+		<%= hidden_field_tag :stumper_first, @stumpers[0] %>
+		<%= hidden_field_tag :stumper_second, @stumpers[1] %>
+		<%= label_tag :stumper, "Humanity Test: What is #{@stumpers[0]} + #{@stumpers[1]}? (go away bots)" %><br />
+		<%= text_field_tag :stumper %>
+	</p>
+
+	<p>
 		<%= f.submit %>
 	</p>
 <% end %>

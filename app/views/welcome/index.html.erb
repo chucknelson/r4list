@@ -10,5 +10,8 @@
 	<% end %>
 
 	<p><%= link_to 'Your Lists', lists_path  %></p>
-	<p><%= link_to 'All Users', users_path %></p>
+	
+	<% if admin? %>
+		<p><%= link_to 'All Users', users_path %></p>
+	<% end %>
 </div>

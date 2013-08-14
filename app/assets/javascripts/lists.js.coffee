@@ -5,7 +5,6 @@
 #NOTE - should this be how I bind events w/ turbolinks, or should I be doing something different?
 jQuery ->
 	$('#list-items').sortable(
-		#containment: '#main-container'
 		items: 'li:not(#new-item)'
 
 		#defining the helper as a static li > table element works much better/easier than changing

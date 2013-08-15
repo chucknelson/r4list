@@ -22,7 +22,7 @@ ActiveRecord::Schema.define(version: 20130813105811) do
     t.integer  "sort_order"
   end
 
-  add_index "items", ["list_id"], name: "index_items_on_list_id"
+  add_index "items", ["list_id"], name: "index_items_on_list_id", using: :btree
 
   create_table "lists", force: true do |t|
     t.string   "title"

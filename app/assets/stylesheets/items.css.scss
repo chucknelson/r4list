@@ -2,6 +2,8 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+$large-screen-threshold: 45em;
+
 .animated {
     -webkit-transition: 0.4s;
 }
@@ -9,14 +11,55 @@
 #list-body {
 	ul {
 		li {
-			&#new-item {
-				background-color: #ccc;
-				form {
-					input[type=text] {
-						width: 100%;
+			&#new-item-placeholder {
+				background-color: #ededed;
+
+				a { 
+					color: #777;
+					text-shadow: 1px 1px 0px #fff;
+				}
+
+				#plus {
+					font-size: 1.4em; //this looks good on iPhone
+					@media screen and (min-width: $large-screen-threshold) {
+						font-size: 1.5em;
+						vertical-align: middle;
 					}
-					input[type=submit] {
-						margin-top: .5em;
+				}
+
+				#add-item {
+
+				}
+			}
+
+			&#new-item {
+				background-color: #ededed;
+				form {
+					display: table-cell;
+					width: 100%;
+					vertical-align: middle;
+
+					div {
+						display: inline-block;
+					}
+
+					#new-item-text-container {
+						width: 60%;
+						@media screen and (min-width: $large-screen-threshold) {
+							width: 86%;
+						}
+
+						input { width: 100%; }
+					}
+					
+					#new-item-button-container {
+						width: 35%;
+						@media screen and (min-width: $large-screen-threshold) {
+							width: 13%;
+						}
+
+						text-align: right;
+						float: right;
 					}
 				}
 			}

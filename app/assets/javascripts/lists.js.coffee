@@ -2,10 +2,23 @@
 # All this logic will automatically be available in application.js.
 # You can use CoffeeScript in this file: http://coffeescript.org/
 
-#NOTE - should this be how I bind events w/ turbolinks, or should I be doing something different?
+newItemToggle = ->
+	$('#new-item-placeholder').toggleClass('hidden')
+	$('#new-item').toggleClass('hidden')
+
+$(document).on('click', '#new-item-placeholder a', (event) ->
+	event.preventDefault()
+	newItemToggle()
+	$('#new-item input[type=text]').focus()
+)
+
+$(document).on('focusout', '#new-item input[type=text]', (event) ->
+	newItemToggle()
+)
+
 jQuery ->
 	$('#list-items').sortable(
-		items: 'li:not(#new-item)'
+		items: 'li:not(.nosort)'
 
 		#defining the helper as a static li > table element works much better/easier than changing
 		#the entire list structure, styling, and animation to work with li > table elements

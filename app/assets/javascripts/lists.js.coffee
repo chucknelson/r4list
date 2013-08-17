@@ -13,7 +13,7 @@ $(document).on('click', '#new-item-placeholder a', (event) ->
 )
 
 $(document).on('focusout', '#new-item input[type=text]', (event) ->
-	newItemToggle()
+	#newItemToggle()
 )
 
 jQuery ->

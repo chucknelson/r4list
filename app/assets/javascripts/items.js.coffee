@@ -25,6 +25,15 @@ $(document).on('click', 'ul#list-items .item-link', (event) ->
 	)
 )
 
+$(document).on('click', 'ul#list-items .item-edit-link', (event) ->
+	event.preventDefault()
+
+)
+
+$(document).on('click', 'ul#list-items .item-edit-container input[type=submit]', (event) ->
+	event.preventDefault()
+)
+
 #having a webkit transition property on an element causes sorting behavior to go wacky (draggable item sizes weird)
 #to get around that, I'm adding and removing the webkit transition behavior via events
 #when a user tries to sort, the transition property isn't there, so nothing is messed up

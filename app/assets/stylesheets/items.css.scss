@@ -15,19 +15,26 @@ $large-screen-threshold: 45em;
 				background-color: #ededed;
 
 				a { 
+					display: table;
 					color: #777;
 					text-shadow: 1px 1px 0px #fff;
 				}
 
+				span {
+					display: table-cell;
+					vertical-align: middle;
+				}
+
 				#plus {
+					width: 1em;
 					font-size: 1.4em; //this looks good on iPhone
 					@media screen and (min-width: $large-screen-threshold) {
 						font-size: 1.5em;
-						vertical-align: middle;
 					}
 				}
 
 				#add-item {
+					padding-top: 3px; //strange fix
 
 				}
 			}
@@ -65,14 +72,45 @@ $large-screen-threshold: 45em;
 			}
 			
 			.item-link {
-				width: 80%;
+				width: 75%;
 				padding-right: .5em;
+			}
+
+			.item-edit-link {
+				width: 5%;
+				@media screen and (min-width: $large-screen-threshold) {
+							width: 15%;
+						}
+				text-align: right;
+
+				img {
+					height: 20px;
+					width: auto;
+					opacity: .6;
+				}
 			}
 
 			.item-delete-link {
 				width: 20%;
+				@media screen and (min-width: $large-screen-threshold) {
+							width: 10%;
+						}
 				text-align: right;
 				color: red;
+			}
+
+			.item-edit-container {
+				display: table-cell;
+				vertical-align: middle;
+				width: 100%;
+
+				input[type=text] {
+					width: 70%;
+					@media screen and (min-width: $large-screen-threshold) {
+							width: 90%;
+						}
+				}
+
 			}
 
 			&.sorting-item { 
@@ -97,6 +135,10 @@ $large-screen-threshold: 45em;
 
 				-webkit-transform: rotateX(180deg);
 
+				&:first-child {
+					-webkit-box-shadow: inset 0px -5px 5px -5px #333;
+				}
+
 				&:not(:first-child) { 
 					border-bottom: none;
 				}
@@ -117,6 +159,10 @@ $large-screen-threshold: 45em;
 
 				a.item-link {
 					color: #ccc;
+				}
+
+				a.item-edit-link {
+					display: none;
 				}
 
 				a.item-delete-link

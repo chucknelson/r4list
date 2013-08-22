@@ -41,7 +41,8 @@ h1 {
 	width: 100%;
 	padding: .5em;
 	background-color: #fff;	
-	overflow: auto; /* deal with floating children */
+	/* don't remember why I needed overflow auto here, but it breaks jquery UI sortable scrolling */
+	//overflow: auto; /* deal with floating children */
 
 	@media screen and (min-width: $large-screen-threshold) {
 		width: $large-screen-threshold;

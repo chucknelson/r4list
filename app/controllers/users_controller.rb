@@ -17,11 +17,11 @@ class UsersController < ApplicationController
 	def create
 		@user = User.new(user_params)
 
-		if params[:stumper].to_i == (params[:stumper_first].to_i + params[:stumper_second].to_i) and @user.save
+		if create_stumper_valid? and @user.save
 			redirect_to login_path, notice: 'User created! Time to login and make some lists!'
 		else
 			@stumpers = stumpers
-			render 'new', alert: 'Check your addition...'
+			render 'new'
 		end
 	end
 
@@ -40,4 +40,13 @@ class UsersController < ApplicationController
 		def stumpers
 			[Random.rand(10), Random.rand(10)]
 		end
+
+		def create_stumper_valid?
+			if params[:stumper].to_i == (params[:stumper_first].to_i + params[:stumper_second].to_i)
+				return true
+			else
+				@user.errors.add(:humanity_test, 'answer is incorrect')
+				return false
+			end
+		end	
 end

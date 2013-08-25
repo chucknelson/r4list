@@ -2,7 +2,7 @@
 # All this logic will automatically be available in application.js.
 # You can use CoffeeScript in this file: http://coffeescript.org/
 
-#TODO - Item edit validation? Rails or JS?
+#TODO rollback any item change upon ajax failure, includes values, flip state, etc.
 
 #wrapper class for items
 class Item
@@ -63,6 +63,7 @@ class Item
 
 		if(@jqObject.find(@itemViewSelector).hasClass('hidden'))
 			@jqObject.find(@itemNameInputSelector).focus()
+			#@itemNameInput(@itemName()) 
 		else
 			@jqObject.find(@itemNameInputSelector).blur()
 
@@ -86,6 +87,18 @@ parentItem = (jqObject) ->
 		new Item jqObject
 	else
 		new Item jqObject.parents('li')
+
+acceptItemEdit = (item) ->
+	item.updateItemName()
+	item.toggleEdit()
+
+cancelItemEdit = (item) ->
+	item.revertItemName()
+	item.toggleEdit()
+
+newItemToggle = ->
+	$('#new-item-placeholder').toggleClass('hidden')
+	$('#new-item').toggleClass('hidden')
 
 #having a webkit transition property on an element causes sorting behavior to go wacky (draggable item sizes weird)
 #to get around that, I'm adding and removing the webkit transition behavior via events
@@ -116,27 +129,43 @@ $(document).on('click', 'ul#list-items .item-edit-done', (event) ->
 	event.preventDefault()
 
 	targetItem = parentItem($(this))
-	targetItem.updateItemName()
-	targetItem.toggleEdit()
+	acceptItemEdit(targetItem)
 )
 
 $(document).on('click', 'ul#list-items .item-edit-cancel', (event) ->
 	event.preventDefault()
 
 	targetItem = parentItem($(this))
-	targetItem.revertItemName()
-	targetItem.toggleEdit()
+	cancelItemEdit(targetItem)
 )
 
 $(document).on('keyup', 'ul#list-items .item-edit input[type=text]', (event) ->
 	event.preventDefault()
-	if(event.keyCode == 13)
+	if(event.keyCode == 13) #enter key, needed because this input is not in a form
 		targetItem = parentItem($(this))
-		targetItem.updateItemName()
-		targetItem.toggleEdit()
+		acceptItemEdit(targetItem)
 
-	else if(event.keyCode == 27)
+	else if(event.keyCode == 27) #escape key
 		targetItem = parentItem($(this))
-		targetItem.revertItemName()
-		targetItem.toggleEdit()	
+		cancelItemEdit(targetItem)
+)
+
+$(document).on('click', '#new-item-placeholder a', (event) ->
+	event.preventDefault()
+	newItemToggle()
+	$('#new-item input[type=text]').focus()
+)
+
+$(document).on('click', '#new-item-cancel', (event) ->
+	event.preventDefault()
+	newItemToggle()
+	$('#new-item input[type=text]').blur()
+)
+
+$(document).on('keyup', '#new-item input[type=text]', (event) ->
+	event.preventDefault()
+	#do not need to worry about enter key, this input is already in a form
+	if(event.keyCode == 27) #escape key
+		newItemToggle()
+		$('#new-item input[type=text]').blur()
 )

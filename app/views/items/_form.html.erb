@@ -3,8 +3,10 @@
 		<div id="new-item-text">
 			<%= f.text_field :name, :autofocus => @item_focus %>
 		</div>
-		<div id="new-item-button">
+		<div id="new-item-actions">
 			<%= f.submit 'Add Item' %>
+			<% # cancel is also a button so margin/padding/alignment behavior is consistent with styled for submit button %>
+			<%= button_tag 'Cancel', id: 'new-item-cancel' %>
 		</div>
 	<% end %>
 </li>

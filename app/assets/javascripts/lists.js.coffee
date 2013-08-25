@@ -2,20 +2,6 @@
 # All this logic will automatically be available in application.js.
 # You can use CoffeeScript in this file: http://coffeescript.org/
 
-newItemToggle = ->
-	$('#new-item-placeholder').toggleClass('hidden')
-	$('#new-item').toggleClass('hidden')
-
-$(document).on('click', '#new-item-placeholder a', (event) ->
-	event.preventDefault()
-	newItemToggle()
-	$('#new-item input[type=text]').focus()
-)
-
-$(document).on('focusout', '#new-item input[type=text]', (event) ->
-	#newItemToggle()
-)
-
 jQuery ->
 	$('#list-items').sortable(
 		containment: 'document'

@@ -46,26 +46,34 @@ $large-screen-threshold: 45em;
 					vertical-align: middle;
 
 					div {
-						display: inline-block;
+						
 					}
 
 					#new-item-text {
-						width: 60%;
-						@media screen and (min-width: $large-screen-threshold) {
-							width: 86%;
+						width: 100%;
+						input { 
+							width: 100%; 
 						}
-
-						input { width: 100%; }
 					}
 					
-					#new-item-button {
-						width: 35%;
-						@media screen and (min-width: $large-screen-threshold) {
-							width: 13%;
+					#new-item-actions {
+						margin-top: .25em;
+						text-align: right;
+						
+						input, button {
+							margin-right: .5em;
+							padding: 0;
+							background: transparent;
+							border: 0;
+							font-weight: bold;
 						}
 
-						text-align: right;
-						float: right;
+						#new-item-cancel {
+							margin-right: 0;
+							color: red;
+							font-weight: normal;
+						}
+
 					}
 				}
 			}
@@ -132,6 +140,7 @@ $large-screen-threshold: 45em;
 					}
 
 					.item-edit-cancel {
+						margin-right: 0;
 						color: red;
 					}
 

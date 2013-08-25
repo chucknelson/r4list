@@ -35,7 +35,6 @@ $large-screen-threshold: 45em;
 
 				#add-item {
 					padding-top: 3px; //strange fix
-
 				}
 			}
 
@@ -50,7 +49,7 @@ $large-screen-threshold: 45em;
 						display: inline-block;
 					}
 
-					#new-item-text-container {
+					#new-item-text {
 						width: 60%;
 						@media screen and (min-width: $large-screen-threshold) {
 							width: 86%;
@@ -59,7 +58,7 @@ $large-screen-threshold: 45em;
 						input { width: 100%; }
 					}
 					
-					#new-item-button-container {
+					#new-item-button {
 						width: 35%;
 						@media screen and (min-width: $large-screen-threshold) {
 							width: 13%;
@@ -69,6 +68,10 @@ $large-screen-threshold: 45em;
 						float: right;
 					}
 				}
+			}
+
+			&.editing {
+				background-color: #eee;
 			}
 			
 			.item-link {
@@ -99,16 +102,39 @@ $large-screen-threshold: 45em;
 				color: red;
 			}
 
-			.item-edit-container {
+			.item-edit {
 				display: table-cell;
 				vertical-align: middle;
 				width: 100%;
 
+				a {
+					display: inline;
+				}
+
 				input[type=text] {
-					width: 70%;
+					width: 100%;
 					@media screen and (min-width: $large-screen-threshold) {
-							width: 90%;
+							width: 100%;
 						}
+					padding-left: .1em;
+				}
+
+				.item-edit-links {
+					margin-top: .25em;
+					text-align: right;
+					
+					a {
+						margin-right: .5em;
+					}
+
+					.item-edit-done {
+						font-weight: bolder;
+					}
+
+					.item-edit-cancel {
+						color: red;
+					}
+
 				}
 
 			}

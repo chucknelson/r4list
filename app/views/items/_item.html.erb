@@ -1,12 +1,23 @@
-<li data-item-id="<%=h item.id %>" class="<%= 'flipped' if item.completed %>">		
-	<%= link_to item.name, '#', :data => { :ajax_route => user_list_item_path(@user, @list, item, :item => { :completed => !item.completed }) }, :class => 'item-link' %>
+<li data-item-id="<%=h item.id %>" class="<%= 'flipped' if item.completed %>" data-ajax-update-route="<%=h user_list_item_path(@user, @list, item) %>">		
 
-	<%= link_to image_tag('pencil.png'), '#', :class => 'item-edit-link' %>
+	<%= hidden_field_tag "item-#{item.id}-completed-status", item.completed %>
 
-	<%= link_to '(delete)', user_list_item_path(@user, @list, item), method: :delete, data: { confirm:'Are you sure?' }, :class => 'item-delete-link' %>
+	<div class='item-view'>
+		<%= link_to item.name, '#', :class => 'item-link' %>
 
-	<div id='<%=h "item-#{item.id}-edit-container" %>' class="item-edit-container hidden">
-			<%= text_field_tag :name %>
-			<%= submit_tag 'Done' %>
+		<%= link_to image_tag('pencil.png', alt: 'Edit Item'), '#', :class => 'item-edit-link' %>
+
+		<%= link_to '(delete)', user_list_item_path(@user, @list, item), method: :delete, data: { confirm:'Are you sure?' }, :class => 'item-delete-link' %>
+	</div>
+
+
+	<div class="item-edit hidden">
+			<div>
+				<%= text_field_tag :name, item.name %>
+			</div>
+			<div class="item-edit-links">
+				<%= link_to 'Done', '#', :class => 'item-edit-done' %>
+				<%= link_to 'Cancel', '#', :class => 'item-edit-cancel' %>
+			</div>
 	</div>
 </li>

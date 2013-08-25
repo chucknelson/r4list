@@ -1,9 +1,9 @@
-<li id="new-item" class="nosort <%= 'hidden' if !@item_focus %>">
+<li id="new-item" class="no-sort <%= 'hidden' if !@item_focus %>">
 	<%= form_for [@user, @list, @list.items.build] do |f| %>
-		<div id="new-item-text-container">
+		<div id="new-item-text">
 			<%= f.text_field :name, :autofocus => @item_focus %>
 		</div>
-		<div id="new-item-button-container">
+		<div id="new-item-button">
 			<%= f.submit 'Add Item' %>
 		</div>
 	<% end %>

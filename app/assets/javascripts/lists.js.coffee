@@ -19,7 +19,8 @@ $(document).on('focusout', '#new-item input[type=text]', (event) ->
 jQuery ->
 	$('#list-items').sortable(
 		containment: 'document'
-		items: 'li:not(.nosort)'
+		items: 'li'
+		cancel: '.no-sort'
 		
 
 		#defining the helper as a static li > table element works much better/easier than changing

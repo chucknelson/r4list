@@ -149,6 +149,12 @@ a.link-button {
 					inset 0px 5px 5px -5px #cdcdcd;
 			}
 
+			div {
+				display: table;
+				height: 100%;
+				width: 100%;
+			}
+
 			a { 
 				display: table-cell;
 				width: 100%;

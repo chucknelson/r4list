@@ -7,7 +7,10 @@ class ListsController < ApplicationController
 	def index
 		params[:user_id] ||= current_user.id #for lists_path
 		@user = User.find(params[:user_id])
-		@lists = @user.lists
+		#@lists = @user.lists.order(:created_at).reverse_order
+		#using ruby enumerable sorting, using activerecord would be more complex for list.items_remaining sort
+		@lists = @user.lists.sort_by { |list| [-list.items_remaining, -list.created_at.to_i] }
+
 	end
 
 	def show

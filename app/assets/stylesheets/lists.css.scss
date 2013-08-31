@@ -1,3 +1,43 @@
 // Place all the styles related to the lists controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+#list-body {
+	ul {
+		li {
+			.list-name {
+
+			}
+
+			.list-items-remaining {
+				color: #999;
+			}
+
+			//TODO - refacor, this is a lot of repeat code from flipped items
+			&.completed-list {
+				background-color: #555;
+				border-bottom: 1px solid;
+				border-color: #333;
+
+				&:first-child {
+					-webkit-box-shadow: inset 0px 5px 5px -5px #333;
+				}
+
+				.list-name {
+					a {
+						color: #ccc;
+						text-decoration: line-through;
+					}
+				}
+
+				.list-items-remaining {
+					
+				}
+			}
+
+			
+		}
+
+
+	}
+}

@@ -8,11 +8,16 @@
 	</div>
 
 	<div id="list-body">
-		<% if !@user.lists.empty? %>
+		<% if !@lists.empty? %>
 			<ul>
-				<% @user.lists.each do |list| %>
-					<li data-list-id="<%=h list.id %>">		
-						<%= link_to list.title, user_list_path(@user, list) %>
+				<% @lists.each do |list| %>
+					<li data-list-id="<%=h list.id %>" class="<%= 'completed-list' if list.completed? %>">
+						<div class="list-name">
+							<%= link_to list.title, user_list_path(@user, list) %>
+						</div>
+						<div class="list-items-remaining">
+							<%= list.items_remaining %> items remaining
+						</div>
 					</li>
 				<% end %>
 			</ul>

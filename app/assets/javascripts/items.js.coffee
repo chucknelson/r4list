@@ -150,7 +150,7 @@ $(document).on('keyup', 'ul#list-items .item-edit input[type=text]', (event) ->
 		cancelItemEdit(targetItem)
 )
 
-$(document).on('click', '#new-item-placeholder a', (event) ->
+$(document).on('click', 'a.add-item-link', (event) ->
 	event.preventDefault()
 	newItemToggle()
 	$('#new-item input[type=text]').focus()

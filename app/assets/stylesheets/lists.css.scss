@@ -10,7 +10,9 @@
 			}
 
 			.list-items-remaining {
-				color: #999;
+				a { 
+					color: #999;
+				}
 			}
 
 			//TODO - refacor, this is a lot of repeat code from flipped items

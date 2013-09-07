@@ -115,6 +115,19 @@ a.link-button {
 #list-header {
 	margin: 0 -.5em;
 	background-color: #d6e8f8;
+
+	h2 {
+		display: inline-block;
+		
+	}
+
+	a {
+		float: right;
+		margin-top: .7em;
+		margin-right: .5em;
+		text-decoration: none;
+		color: #555;
+	}
 }
 
 #list-footer {
@@ -134,9 +147,11 @@ a.link-button {
 			width: 100%;
 			
 			height: 2em;
-			@media screen and (min-width: $large-screen-threshold) {
+			//a bit more height on larger screens / desktops
+			@media screen and (min-width: $large-screen-threshold) and (min-device-width: 1024px) {
 				height: 3em;
 			}
+			
 
 			//padding: .5em .6em;
 			//padding: .5em 0;

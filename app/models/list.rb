@@ -9,7 +9,12 @@ class List < ActiveRecord::Base
 	end
 
 	def completed?
-		self.items_remaining == 0
+		!self.items.empty? && self.items_remaining == 0
+	end
+
+	#returns list update timestamp if list has no items
+	def last_updated_ts
+		self.items.maximum(:updated_at) || self.updated_at
 	end
 
 end

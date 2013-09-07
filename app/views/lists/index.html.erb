@@ -16,7 +16,7 @@
 							<%= link_to list.title, user_list_path(@user, list) %>
 						</div>
 						<div class="list-items-remaining">
-							<%= list.items_remaining %> items remaining
+							<%= link_to list_items_remaining_description(list), user_list_path(@user, list) %>
 						</div>
 					</li>
 				<% end %>

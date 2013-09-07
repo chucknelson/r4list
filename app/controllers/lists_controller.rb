@@ -9,7 +9,14 @@ class ListsController < ApplicationController
 		@user = User.find(params[:user_id])
 		#@lists = @user.lists.order(:created_at).reverse_order
 		#using ruby enumerable sorting, using activerecord would be more complex for list.items_remaining sort
-		@lists = @user.lists.sort_by { |list| [-list.items_remaining, -list.created_at.to_i] }
+		@lists = @user.lists.sort_by { 
+			|list| [
+				list.completed? ? 1:0, 
+				-list.items_remaining, 
+				-list.last_updated_ts.to_i,
+				-list.created_at.to_i
+			] 
+		}
 
 	end
 
@@ -31,7 +38,7 @@ class ListsController < ApplicationController
 		@list = @user.lists.create(list_params)
 
 		if @list.save
-			redirect_to user_lists_path(@user), notice: 'List created successfully'
+			redirect_to user_list_path(@user, @list), notice: 'List created successfully'
 		else
 			render 'new'
 		end

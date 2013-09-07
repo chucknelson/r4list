@@ -13,8 +13,7 @@ class ListsController < ApplicationController
 			|list| [
 				list.completed? ? 1:0, 
 				-list.items_remaining, 
-				-list.last_updated_ts.to_i,
-				-list.created_at.to_i
+				-list.last_updated_ts.to_i
 			] 
 		}
 

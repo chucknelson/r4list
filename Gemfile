@@ -4,7 +4,8 @@ source 'https://rubygems.org'
 ruby '2.0.0'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '4.0.0'
+# Using 4.0.x versions (don't want to automatically update to 4.x)
+gem 'rails', '~> 4.0.0'
 
 group :production do
 	gem 'rails_12factor' #required for heroku rails 4 asset pipeline compatability
@@ -49,7 +50,8 @@ group :doc do
 end
 
 # Use ActiveModel has_secure_password
-gem 'bcrypt-ruby', '~> 3.0.0'
+# Stick with 3.x version
+gem 'bcrypt-ruby', '~> 3.0'
 
 # Use unicorn as the app server
 # gem 'unicorn'

@@ -146,11 +146,14 @@ a.link-button {
 			display: table;
 			width: 100%;
 			
-			height: 2em;
+			height: 3em;
 			//a bit more height on larger screens / desktops
+			//3em seems right for all now?
+			/*
 			@media screen and (min-width: $large-screen-threshold) and (min-device-width: 1024px) {
 				height: 3em;
 			}
+			*/
 			
 
 			//padding: .5em .6em;

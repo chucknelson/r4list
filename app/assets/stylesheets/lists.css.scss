@@ -6,13 +6,12 @@
 	ul {
 		li {
 			.list-name {
-
+				display: block;
 			}
 
 			.list-items-remaining {
-				a { 
-					color: #999;
-				}
+				display: block;
+				color: #999;
 			}
 
 			//TODO - refacor, this is a lot of repeat code from flipped items
@@ -26,10 +25,8 @@
 				}
 
 				.list-name {
-					a {
-						color: #ccc;
-						text-decoration: line-through;
-					}
+					color: #ccc;
+					text-decoration: line-through;
 				}
 
 				.list-items-remaining {

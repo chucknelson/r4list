@@ -1,7 +1,7 @@
 module ListsHelper
 
 	def list_items_remaining_description(list)
-		if list.items.empty?
+		if list.completed?
 			'No items'
 		else
 			pluralize(list.items_remaining, 'item') + ' remaining'

@@ -12,4 +12,8 @@ class ActiveSupport::TestCase
   fixtures :all
 
   # Add more helper methods to be used by all tests here...
+
+  # Helper for updating a list item, verifying a successful response and reloading affected data.
+  # TODO?
+  
 end

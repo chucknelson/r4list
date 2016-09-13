@@ -1,9 +1,11 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
 
-one:
-  title: MyString
-  description: MyText
+user1_list1:
+  title: User 1 List 1
+  user: user1
+  items_remaining: 1
 
-two:
-  title: MyString
-  description: MyText
+user2_list1:
+  title: User 2 List 1
+  user: user2
+  items_remaining: 0

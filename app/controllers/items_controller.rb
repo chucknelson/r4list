@@ -18,8 +18,12 @@ class ItemsController < ApplicationController
 		@user = User.find(params[:user_id])
 		@list = @user.lists.find(params[:list_id])
 		@item = @list.items.create(item_params.merge(:sort_order => (@list.items.maximum(:sort_order) || -1) + 1))
-
-		redirect_to user_list_path(@user, @list, :item_focus => true)
+		
+		if @item && @list.update(items_remaining: @list.items_remaining + 1)
+			redirect_to user_list_path(@user, @list, :item_focus => true)
+		else
+			redirect_to user_list_path(@user, @list), alert: 'Item creation failed.'
+		end
 	end
 
 	def update
@@ -29,10 +33,14 @@ class ItemsController < ApplicationController
 
 		respond_to do |format|
 			if @item.update(item_params)
+			    if item_params.key?(:completed)
+					@list.update(items_remaining: @list.items_remaining + (@item.completed ? -1 : 1))
+				end
+
 				format.html {redirect_to user_list_path(@user, @list) }
 				format.js { } #js response does the work
 			else
-				redirect_to user_list_path(@user, @list), alert: 'Item failed to update'
+				redirect_to user_list_path(@user, @list), alert: 'Item update failed'
 			end
 		end
 	end
@@ -42,7 +50,11 @@ class ItemsController < ApplicationController
 		@list = @user.lists.find(params[:list_id])
 		@item = @list.items.find(params[:id])
 
-		@item.destroy
+		if !@item.completed && @item.destroy
+			@list.update(items_remaining: @list.items_remaining - 1)
+		else
+			redirect_to user_list_path(@user, @list), alert: 'Item deletion failed'
+		end
 
 		redirect_to user_list_path(@user, @list), notice: 'Item deleted'
 	end

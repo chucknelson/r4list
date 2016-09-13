@@ -12,7 +12,7 @@ group :production do
 end
 
 # Use sqlite3 as the database for Active Record
-#gem 'sqlite3'
+gem 'sqlite3', :group => :test
 
 # Use postgres as the database to minimize compatability issues with Heroku
 gem 'pg'

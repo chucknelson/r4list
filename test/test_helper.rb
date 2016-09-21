@@ -15,5 +15,9 @@ class ActiveSupport::TestCase
 
   # Helper for updating a list item, verifying a successful response and reloading affected data.
   # TODO?
-  
+    
+  def init_user_session(user)
+    session[:user_id] = user.id
+  end
+
 end

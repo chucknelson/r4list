@@ -32,7 +32,7 @@ ActiveRecord::Schema.define(version: 20160817022150) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "user_id"
-    t.integer  "items_remaining"
+    t.integer  "items_remaining", default: 0
   end
 
   create_table "users", force: true do |t|

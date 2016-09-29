@@ -39,6 +39,20 @@ class ItemsControllerTest < ActionController::TestCase
     assert_equal expected_item_remaining_count, @list.items_remaining
   end
 
+  test "should delete completed item successfully" do
+    @item = items(:user1_list1_item2) # a completed item
+    expected_items_count = @list.items.count - 1
+    expected_item_remaining_count = @list.items.where(completed: false).count
+
+    delete :destroy, {user_id: @user.id, list_id: @list.id, id: @item.id}
+    assert_response :redirect
+    assert_equal "Item deleted", flash[:notice]
+    @list.reload
+
+    assert_equal expected_items_count, @list.items.count
+    assert_equal expected_item_remaining_count, @list.items_remaining
+  end
+
   test "should update item successfully" do
     updated_name = "Updated Name"
     patch :update, {format: 'js', user_id: @user.id, list_id: @list.id, id: @item.id, item: {name: updated_name}}

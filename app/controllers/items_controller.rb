@@ -50,8 +50,10 @@ class ItemsController < ApplicationController
 		@list = @user.lists.find(params[:list_id])
 		@item = @list.items.find(params[:id])
 
-		if !@item.completed && @item.destroy
-			@list.update(items_remaining: @list.items_remaining - 1)
+		if @item.destroy
+			if !@item.completed 
+				@list.update(items_remaining: @list.items_remaining - 1)
+			end
 		else
 			redirect_to user_list_path(@user, @list), alert: 'Item deletion failed'
 		end

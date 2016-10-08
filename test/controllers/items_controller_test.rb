@@ -110,6 +110,18 @@ class ItemsControllerTest < ActionController::TestCase
     assert_equal expected_items_remaining_count, @list.items.where(completed: false).count
   end
 
+  test "should not update list items if item status does not change" do
+    expected_items_remaining_count = @list.items_remaining
+
+    patch :update, {format: 'js', user_id: @user.id, list_id: @list.id, id: @item.id, item: {completed: @item.completed}}
+    assert_response :success
+    @item.reload
+    @list.reload
+
+    assert_equal expected_items_remaining_count, @list.items_remaining
+    assert_equal expected_items_remaining_count, @list.items.where(completed: false).count
+  end
+
   
 
 end

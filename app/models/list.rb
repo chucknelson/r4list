@@ -8,4 +8,8 @@ class List < ActiveRecord::Base
 		self.items_remaining == 0
 	end
 
+	def update_items_remaining
+    	self.items_remaining = self.items.where(completed: false).count
+	end
+
 end

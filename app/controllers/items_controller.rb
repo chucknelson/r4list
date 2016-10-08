@@ -33,10 +33,6 @@ class ItemsController < ApplicationController
 
 		respond_to do |format|
 			if @item.update(item_params)
-			    if item_params.key?(:completed)
-					@list.update(items_remaining: @list.items_remaining + (@item.completed ? -1 : 1))
-				end
-
 				format.html {redirect_to user_list_path(@user, @list) }
 				format.js { } #js response does the work
 			else

@@ -3,7 +3,8 @@ class Item < ActiveRecord::Base
 
   validates :name, presence: true
 
-  after_update :update_list_items_remaining 
+  after_save :update_list_items_remaining 
+  after_destroy :update_list_items_remaining
 
   def status
   	self.completed ? 'Complete' : 'Incomplete'

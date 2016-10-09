@@ -5,7 +5,7 @@ class List < ActiveRecord::Base
 	validates :title, presence: true, length: { minimum: 5 }
 
 	def completed?
-		self.items_remaining == 0
+		self.items_remaining == 0 && self.items.exists? 
 	end
 
 	def update_items_remaining

@@ -7,16 +7,9 @@ class ListsController < ApplicationController
 	def index
 		params[:user_id] ||= current_user.id #for lists_path
 		@user = User.find(params[:user_id])
-		#@lists = @user.lists.order(:created_at).reverse_order
-		#using ruby enumerable sorting, using activerecord would be more complex for list.items_remaining sort
-		@lists = @user.lists.sort_by { 
-			|list| [
-				list.completed? ? 1:0, 
-				-list.items_remaining, 
-				-list.updated_at.to_i
-			] 
-		}
-
+		@lists = @user.lists.order(items_remaining: :desc, updated_at: :desc)
+		#TODO: Add "completed" to list DB record for efficient sorting
+		#TODO: Change item "after_save" method to a more general "update_parent_list" method (it should remain small)
 	end
 
 	def show

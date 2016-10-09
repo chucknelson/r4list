@@ -24,7 +24,7 @@ class ListsControllerTest < ActionController::TestCase
     assert_equal first_list.items_remaining, first_list.items.where(completed: false).count
   end
 
-  test "should create list successfully" do
+  test "should create an empty list successfully" do
     new_list = List.new(title: "New List")
     post :create, {user_id: @user.id, list: {title: new_list.title}}
     assert_response :redirect
@@ -33,7 +33,7 @@ class ListsControllerTest < ActionController::TestCase
     created_list = List.last
     assert_equal new_list.title, created_list.title
     assert_equal 0, created_list.items_remaining
-    assert_equal true, created_list.completed?
+    assert_equal false, created_list.completed? #no items ever completed so list is just new
   end
 
   def teardown

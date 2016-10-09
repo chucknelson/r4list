@@ -19,7 +19,7 @@ class ItemsController < ApplicationController
 		@list = @user.lists.find(params[:list_id])
 		@item = @list.items.create(item_params.merge(:sort_order => (@list.items.maximum(:sort_order) || -1) + 1))
 		
-		if @item && @list.update(items_remaining: @list.items_remaining + 1)
+		if @item
 			redirect_to user_list_path(@user, @list, :item_focus => true)
 		else
 			redirect_to user_list_path(@user, @list), alert: 'Item creation failed.'
@@ -47,14 +47,10 @@ class ItemsController < ApplicationController
 		@item = @list.items.find(params[:id])
 
 		if @item.destroy
-			if !@item.completed 
-				@list.update(items_remaining: @list.items_remaining - 1)
-			end
+			redirect_to user_list_path(@user, @list), notice: 'Item deleted'
 		else
 			redirect_to user_list_path(@user, @list), alert: 'Item deletion failed'
 		end
-
-		redirect_to user_list_path(@user, @list), notice: 'Item deleted'
 	end
 
 	private

@@ -1,2 +1,2 @@
 # r4list
-A simple list web app implemented in Rail 4.0.
+A simple list web app implemented in Rails 4.0.

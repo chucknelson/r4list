@@ -6,6 +6,12 @@ user1_list1_item1:
   sort_order: 0
   list: user1_list1
 
+user1_broken_list_item1:
+  name: Item Broken.1
+  completed: false
+  sort_order: 0
+  list: user1_broken_list
+
 user1_list1_item2:
   name: Item 1.1.2
   completed: true

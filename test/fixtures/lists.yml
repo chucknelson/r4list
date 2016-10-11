@@ -5,7 +5,14 @@ user1_list1:
   user: user1
   items_remaining: 1
 
+user1_broken_list:
+  title: abc
+  user: user1
+  items_remaining: 1
+
 user2_list1:
   title: User 2 List 1
   user: user2
   items_remaining: 0
+
+

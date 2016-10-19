@@ -1,5 +1,10 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
 
+user1_list_with_one_incomplete_item:
+  title: One Incomplete Item
+  user: user1
+  items_remaining: 1
+
 user1_list1:
   title: User 1 List 1
   user: user1

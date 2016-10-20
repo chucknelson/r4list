@@ -10,13 +10,7 @@ class List < ActiveRecord::Base
   end
 
   def update_items_remaining
-    self.items_remaining = self.items.where(completed: false).count
+    self.items_remaining = self.items.where(completed: false).size
   end
-
-  # private
-  # #enforce updating of this value through public method only
-  # def items_remaining=(val)
-  #   write_attribute :items_remaining, val
-  # end 
 
 end

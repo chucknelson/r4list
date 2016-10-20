@@ -11,7 +11,7 @@ class ListTest < ActiveSupport::TestCase
   def teardown
   end
 
-  #Associations
+  # Associations
   test "should belong to users" do
     user = @test_user
     assert_not_nil user.lists, "User has no lists / lists not belonging to user"

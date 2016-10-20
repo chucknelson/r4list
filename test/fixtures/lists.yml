@@ -5,6 +5,11 @@ user1_list1:
   user: user1
   items_remaining: 2
 
+user1_list2:
+  title: User 1 List 2 (Empty List)
+  user: user1
+  items_remaining: 0
+
 user2_list1:
   title: User 2 List 1
   user: user2

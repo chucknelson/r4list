@@ -1,7 +1,7 @@
 class Item < ActiveRecord::Base
   belongs_to :list
 
-  validates :name, presence: true
+  validates :name, :list, presence: true
   #TODO: Create failing test before implementing this validation
   #validates_associated :list
 

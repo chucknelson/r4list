@@ -10,7 +10,7 @@ class List < ActiveRecord::Base
   end
 
   def update_items_remaining
-    self.items_remaining = self.items.where(completed: false).size
+    self.update(items_remaining: self.items.where(completed: false).size)
   end
 
 end

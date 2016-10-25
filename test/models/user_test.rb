@@ -58,7 +58,10 @@ class UserTest < ActiveSupport::TestCase
     assert user.save, "User did not save successfully"
   end
 
-  # Methods
+  # Callbacks
+  # N/A
+
+  # Methods (not used in callbacks)
   test "should authenticate with a correct password (i.e., is bcrypt/has_secure_password working)" do
     user = @test_user
     assert_not user.authenticate("incorrect password"), "User authenticated with an incorrect password"

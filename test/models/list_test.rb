@@ -52,7 +52,10 @@ class ListTest < ActiveSupport::TestCase
     assert list.save, "List did not save successfully"
   end
 
-  # Methods
+  # Callbacks
+  # N/A
+
+  # Methods (not used in callbacks)
   test "should be incomplete if no items exist (i.e., new empty list)" do
     list = List.new
     assert_not list.completed?, "List is completed but no items exist"
@@ -64,6 +67,7 @@ class ListTest < ActiveSupport::TestCase
 
     assert list.items.where(completed: false).each { |item| item.update(completed: true) }
     assert list.update_items_remaining
+    list.reload
     
     assert_equal 0, list.items_remaining, "Items remaining is not 0"
     assert list.completed?, "Items are all complete but list is incomplete"
@@ -77,6 +81,7 @@ class ListTest < ActiveSupport::TestCase
     
     assert list.items.where(completed: false).first.update(completed: true)
     assert list.update_items_remaining
+    list.reload
 
     assert_equal list.items_remaining, list.items.where(completed: false).size, "Items remaining out of sync with individual items"
     assert_equal expected_items_remaining, list.items_remaining, "Items remaining not updated correctly"

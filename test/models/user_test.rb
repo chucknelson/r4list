@@ -20,10 +20,7 @@ class UserTest < ActiveSupport::TestCase
   test "should destroy associated lists if user destroyed" do
     user = @test_user
     assert_not_nil List.find_by(user_id: user.id), "User has no lists"
-
-    user.destroy
-
-    assert user.destroyed?, "User not destroyed"
+    assert user.destroy, "User not destroyed"
     assert_nil List.find_by(user_id: user.id), "User still has lists"
   end
 

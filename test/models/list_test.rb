@@ -25,10 +25,7 @@ class ListTest < ActiveSupport::TestCase
   test "should destroy associated items if list destroyed" do
     list = @test_list
     assert_not_nil Item.find_by(list_id: list.id), "List has no items"
-
-    list.destroy
-
-    assert list.destroyed?, "List not destroyed"
+    assert list.destroy, "List not destroyed"
     assert_nil Item.find_by(list_id: list.id), "List still has items"
   end
 
@@ -65,8 +62,8 @@ class ListTest < ActiveSupport::TestCase
     list = @test_list
     assert_not list.completed?, "Test list is already complete"
 
-    list.items.where(completed: false).each { |item| item.update(completed: true) }
-    list.update_items_remaining
+    assert list.items.where(completed: false).each { |item| item.update(completed: true) }
+    assert list.update_items_remaining
     
     assert_equal 0, list.items_remaining, "Items remaining is not 0"
     assert list.completed?, "Items are all complete but list is incomplete"
@@ -78,8 +75,8 @@ class ListTest < ActiveSupport::TestCase
     assert_equal list.items.where(completed: false).size, list.items_remaining, "Test list not set up correctly"
     expected_items_remaining = list.items_remaining - 1
     
-    list.items.where(completed: false).first.update(completed: true)
-    list.update_items_remaining
+    assert list.items.where(completed: false).first.update(completed: true)
+    assert list.update_items_remaining
 
     assert_equal list.items_remaining, list.items.where(completed: false).size, "Items remaining out of sync with individual items"
     assert_equal expected_items_remaining, list.items_remaining, "Items remaining not updated correctly"

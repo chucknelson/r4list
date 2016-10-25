@@ -34,6 +34,24 @@ class ItemTest < ActiveSupport::TestCase
     assert_not item.save, "Item saved without a title"
   end
 
+  # Callbacks
+  test "should update list's items remaining after status change" do
+    item = @test_incomplete_item
+    list = item.list
+    item.update(completed: true)
+    assert_equal true, item.completed, "Item did not update correctly"
+    assert_equal list.items.where(completed: false).size, list.items_remaining, "Items remaining not updated correctly"
+  end
+
+  test "should not update list's items remaining after item update failure" do
+    item = @test_incomplete_item
+    list = item.list
+    item.update(completed: true, name: nil)
+    assert_equal false, item.completed, "Item updated unexpectedly"
+    assert_equal list.items.where(completed: false).size, list.items_remaining, "Items remaining updated unexpectedly"
+  end
+  
+
   # Methods
 
 

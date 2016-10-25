@@ -1,16 +1,16 @@
 class Item < ActiveRecord::Base
   belongs_to :list
 
-  validates :name, :list, presence: true
-  #TODO: Create failing test before implementing this validation
-  #validates_associated :list
+  validates :list, presence: true
+  validates :name, presence: true
 
   after_save :update_list_items_remaining 
-  after_destroy :update_list_items_remaining
+  # after_destroy :update_list_items_remaining
 
-  def status
-  	self.completed ? 'Complete' : 'Incomplete'
-  end
+  # TODO: Delete...is this even used?
+  # def status
+  # 	self.completed ? 'Complete' : 'Incomplete'
+  # end
 
   def update_list_items_remaining
     self.list.update_items_remaining

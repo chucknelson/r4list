@@ -1,21 +1,21 @@
 class ListsController < ApplicationController
-	before_action :authenticate_user #helper method(s) in application controller
+	before_action :authenticate_user # helper method(s) in application controller
 
-	#lists are nested resources of users, which is why each action creates the user model
-	#all of the resource paths expect a user and a list model
+	# Lists are nested resources of users, which is why each action creates the user model
+	# All of the resource paths expect a user and a list model
 
 	def index
-		params[:user_id] ||= current_user.id #for lists_path
+		params[:user_id] ||= current_user.id # for lists_path
 		@user = User.find(params[:user_id])
 		@lists = @user.lists.order(items_remaining: :desc, updated_at: :desc)
-		#TODO: Add "completed" to list DB record for efficient sorting
-		#TODO: Change item "after_save" method to a more general "update_parent_list" method (it should remain small)
+		# TODO: Add "completed" to list DB record for efficient sorting
+		# TODO: Change item "after_save" method to a more general "update_parent_list" method (it should remain small)
 	end
 
 	def show
 		@user = User.find(params[:user_id])
 		@list = @user.lists.find(params[:id])
-		@items = @list.items.order(:sort_order, :id) #default sort
+		@items = @list.items.order(:sort_order, :id) # default sort
 
 		@item_focus = params[:item_focus]
 	end

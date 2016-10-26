@@ -17,7 +17,6 @@ R4list::Application.routes.draw do
   get 'login', to: 'sessions#new'
   delete 'logout', to: 'sessions#destroy'
 
-
   #get "welcome/index"
 
   # The priority is based upon order of creation: first created -> highest priority.

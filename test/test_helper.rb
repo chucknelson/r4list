@@ -20,4 +20,12 @@ class ActiveSupport::TestCase
     session[:user_id] = user.id
   end
 
+  def get_incomplete_item(list)
+    list.items.find_by(completed: false)
+  end
+
+  def get_completed_item(list)
+    list.items.find_by(completed: true)
+  end
+
 end

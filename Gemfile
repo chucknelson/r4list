@@ -57,10 +57,13 @@ gem 'bcrypt-ruby', '~> 3.0'
 # gem 'unicorn'
 
 # Use thin as the app server
-gem 'thin'
+gem 'thin', '~> 1.6.0'
 
 # Use Capistrano for deployment
 # gem 'capistrano', group: :development
 
 # Use debugger
 # gem 'debugger', group: [:development, :test]
+
+# Use SimpleCov for test coverage
+gem 'simplecov', '~> 0.15.0', :require => false, :group => :test

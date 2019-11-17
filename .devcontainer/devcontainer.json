@@ -18,6 +18,9 @@
   // "runArgs": [ "-u", "vscode" ],
   // Add the IDs of extensions you want installed when the container is created in the array below.
   "extensions": [
-    "rebornix.Ruby"
+    "editorconfig.editorconfig",
+    "ms-azuretools.vscode-docker",
+    "ms-vscode-remote.vscode-remote-extensionpack",
+    "rebornix.Ruby",
   ]
 }

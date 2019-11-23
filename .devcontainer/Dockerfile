@@ -1,4 +1,6 @@
-FROM debian:latest
+# For now, ensure ruby version here matches what's in our Gemfile
+# TODO: Find a better way to keep this in sync with the project?
+FROM ruby:2.3.1
 
 # Avoid warnings by switching to noninteractive
 ENV DEBIAN_FRONTEND=noninteractive
@@ -13,46 +15,46 @@ ARG USER_GID=$USER_UID
 
 # Configure apt and install packages
 RUN apt-get update \
-  && apt-get -y install --no-install-recommends apt-utils dialog 2>&1 \
-  #
-  # Install vim, git, process tools, lsb-release
-  && apt-get install -y \
-  vim \
-  git \
-  iproute2 \
-  procps \
-  lsb-release \
-  #
-  # Install ruby
-  && apt-get install -y \
-  ruby \
-  ruby-dev \
-  build-essential \
-  libsqlite3-dev \
-  zlib1g-dev \
-  libxml2 \
-  #
+  # && apt-get -y install --no-install-recommends apt-utils dialog 2>&1 \
+  # #
+  # # Install vim, git, process tools, lsb-release
+  # && apt-get install -y \
+  # vim \
+  # git \
+  # iproute2 \
+  # procps \
+  # lsb-release \
+  # #
+  # # Install ruby
+  # && apt-get install -y \
+  # ruby \
+  # ruby-dev \
+  # build-essential \
+  # libsqlite3-dev \
+  # zlib1g-dev \
+  # libxml2 \
+  # #
   # Install nodejs
   && apt-get install -y nodejs \
-  # 
-  # Install yarn
-  && apt-get install -y curl apt-transport-https lsb-release \
-  && curl -sS https://dl.yarnpkg.com/$(lsb_release -is | tr '[:upper:]' '[:lower:]')/pubkey.gpg | apt-key add - 2>/dev/null \
-  && echo "deb https://dl.yarnpkg.com/$(lsb_release -is | tr '[:upper:]' '[:lower:]')/ stable main" | tee /etc/apt/sources.list.d/yarn.list \
-  && apt-get update \
-  && apt-get -y install --no-install-recommends yarn \
-  #
-  # Install debug tools
-  && gem install \
-  rake \
-  ruby-debug-ide \
-  debase \
-  #
-  # Install sinatra MVC components
-  && gem install \
-  rails \
-  webdrivers \
-  #
+  # # 
+  # # Install yarn
+  # && apt-get install -y curl apt-transport-https lsb-release \
+  # && curl -sS https://dl.yarnpkg.com/$(lsb_release -is | tr '[:upper:]' '[:lower:]')/pubkey.gpg | apt-key add - 2>/dev/null \
+  # && echo "deb https://dl.yarnpkg.com/$(lsb_release -is | tr '[:upper:]' '[:lower:]')/ stable main" | tee /etc/apt/sources.list.d/yarn.list \
+  # && apt-get update \
+  # && apt-get -y install --no-install-recommends yarn \
+  # #
+  # # Install debug tools
+  # && gem install \
+  # rake \
+  # ruby-debug-ide \
+  # debase \
+  # #
+  # # Install sinatra MVC components
+  # && gem install \
+  # rails \
+  # webdrivers \
+  # #
   # Create a non-root user to use if preferred - see https://aka.ms/vscode-remote/containers/non-root-user.
   && groupadd --gid $USER_GID $USERNAME \
   && useradd -s /bin/bash --uid $USER_UID --gid $USER_GID -m $USERNAME \

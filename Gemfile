@@ -1,7 +1,7 @@
 source 'https://rubygems.org'
 
 #use specific version of ruby
-ruby '2.3.1'
+ruby '2.3.8'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 # Using 4.0.x versions (don't want to automatically update to 4.x)

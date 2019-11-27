@@ -1,0 +1,33 @@
+version: '3'
+services:
+  app:
+    # Uncomment the next line to use a non-root user. On Linux, this will prevent
+    # new files getting created as root, but you may need to update the USER_UID
+    # and USER_GID in .devcontainer/Dockerfile to match your user if not 1000.
+    user: vscode
+    build: 
+      context: ..
+      dockerfile: .devcontainer/Dockerfile
+    ports:
+      - 3000:3000
+    volumes:
+      # Bind mount our code to /workspace
+      - ..:/workspace
+    # Overrides default command so things don't shut down after the process ends
+    # i.e., we can interactively work in the container
+    command: sleep infinity
+    depends_on:
+      - db
+
+  db:
+    image: postgres:9.4
+    restart: unless-stopped
+    ports: 
+      - 5432:5432
+    environment:
+      POSTGRES_PASSWORD: password
+    volumes:
+      - "r4list-db-data:/var/lib/postgresql/data"
+
+volumes:
+    r4list-db-data:

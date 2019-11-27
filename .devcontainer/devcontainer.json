@@ -1,0 +1,22 @@
+// For format details, see https://aka.ms/vscode-remote/devcontainer.json or the definition README at
+// Adapted from: https://github.com/microsoft/vscode-dev-containers/tree/master/containers/ruby-2-rails-5
+{
+  "name": "r4list",
+  "dockerComposeFile": "docker-compose.yml",
+  "service": "app",
+  "workspaceFolder": "/workspace",
+  // Use 'settings' to set *default* container specific settings.json values on container create. 
+  // You can edit these settings after create using File > Preferences > Settings > Remote.
+  "settings": {
+    "terminal.integrated.shell.linux": "/bin/bash"
+  },
+  // Install dependencies from Gemfile
+  "postCreateCommand": "pwd && bundle install",
+  // Add the IDs of extensions you want installed when the container is created in the array below.
+  "extensions": [
+    "editorconfig.editorconfig",
+    "ms-azuretools.vscode-docker",
+    "ms-vscode-remote.vscode-remote-extensionpack",
+    "rebornix.Ruby"
+  ]
+}

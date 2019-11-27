@@ -2,25 +2,16 @@
 // Adapted from: https://github.com/microsoft/vscode-dev-containers/tree/master/containers/ruby-2-rails-5
 {
   "name": "r4list",
-  "dockerFile": "Dockerfile",
+  "dockerComposeFile": "docker-compose.yml",
+  "service": "app",
+  "workspaceFolder": "/workspace",
   // Use 'settings' to set *default* container specific settings.json values on container create. 
   // You can edit these settings after create using File > Preferences > Settings > Remote.
   "settings": {
     "terminal.integrated.shell.linux": "/bin/bash"
   },
-  // Publish default port for local testing
-  "appPort": [
-    "3000:3000"
-  ],
   // Install dependencies from Gemfile
   "postCreateCommand": "pwd && bundle install",
-  // Uncomment the next line to use a non-root user. On Linux, this will prevent
-  // new files getting created as root, but you may need to update the USER_UID
-  // and USER_GID in .devcontainer/Dockerfile to match your user if not 1000.
-  "runArgs": [
-    "-u",
-    "vscode"
-  ],
   // Add the IDs of extensions you want installed when the container is created in the array below.
   "extensions": [
     "editorconfig.editorconfig",

@@ -17,3 +17,6 @@
 
 # Ignore simplecov test coverage files
 /coverage
+
+# Ignore application secrets
+secrets_internal.yml

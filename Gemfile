@@ -58,11 +58,8 @@ end
 # Stick with 3.x version
 gem 'bcrypt-ruby', '~> 3.0'
 
-# Use unicorn as the app server
-# gem 'unicorn'
-
-# Use thin as the app server
-gem 'thin', '~> 1.6.0'
+# Use puma for app server
+gem 'puma'
 
 # Use Capistrano for deployment
 # gem 'capistrano', group: :development

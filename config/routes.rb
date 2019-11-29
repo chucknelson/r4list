@@ -1,8 +1,10 @@
-R4list::Application.routes.draw do
-  
+Rails.application.routes.draw do
+  # The priority is based upon order of creation: first created -> highest priority.
+  # See how all your routes lay out with "rake routes".
+
   # You can have the root of your site routed with "root"
   root 'welcome#index'
-
+  
   resources :users do
     resources :lists do
       resources :items
@@ -16,12 +18,7 @@ R4list::Application.routes.draw do
   resources :sessions, only: [:new, :create, :destroy]
   get 'login', to: 'sessions#new'
   delete 'logout', to: 'sessions#destroy'
-
-  #get "welcome/index"
-
-  # The priority is based upon order of creation: first created -> highest priority.
-  # See how all your routes lay out with "rake routes".
-
+  
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
 
@@ -56,7 +53,7 @@ R4list::Application.routes.draw do
   #       get 'recent', on: :collection
   #     end
   #   end
-  
+
   # Example resource route with concerns:
   #   concern :toggleable do
   #     post 'toggle'

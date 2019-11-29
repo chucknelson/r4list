@@ -4,18 +4,18 @@ source 'https://rubygems.org'
 ruby '2.3.8'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-# Using 4.0.x versions (don't want to automatically update to 4.x)
-gem 'rails', '~> 4.0.0'
+# Using 4.1.x versions (don't want to automatically update to 4.x)
+gem 'rails', '~> 4.1.0'
 
 group :production do
 	gem 'rails_12factor' #required for heroku rails 4 asset pipeline compatability
 end
 
 # Use sqlite3 as the database for Active Record
-gem 'sqlite3', :group => :test
+gem 'sqlite3', '~> 1.3.0', :group => :test
 
 # Use postgres as the database to minimize compatability issues with Heroku
-gem 'pg'
+gem 'pg', '~> 0.18.0'
 
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 4.0.0'

@@ -27,8 +27,7 @@ class UserTest < ActiveSupport::TestCase
   # Validations
   test "should not save user without credentials (i.e., is bcrypt/has_secure_password working)" do
     user = @new_user
-    user.password_confirmation = nil
-    assert_nil user.password_confirmation, "Password confirmation exists but should be nil"
+    user.password_confirmation = "" # i.e., blank form field
     assert_not user.save, "User saved without a password confirmation"
   end
 

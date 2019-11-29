@@ -1,6 +1,6 @@
 # For now, ensure ruby version here matches what's in our Gemfile
 # TODO: Find a better way to keep this in sync with the project?
-# TODO: Update to supported ruby version on Heroku, but need to get Rails up to at least 5.x first
+# TODO: Update to supported ruby version on Heroku, but need to get Rails up to at least 4.2.x first
 FROM ruby:2.3.8
 
 # Avoid warnings by switching to noninteractive
@@ -16,49 +16,17 @@ ARG USER_GID=$USER_UID
 
 # Configure apt and install packages
 RUN apt-get update \
-  # && apt-get -y install --no-install-recommends apt-utils dialog 2>&1 \
-  # #
-  # # Install vim, git, process tools, lsb-release
-  # && apt-get install -y \
-  # vim \
-  # git \
-  # iproute2 \
-  # procps \
-  # lsb-release \
-  # #
-  # # Install ruby
-  # && apt-get install -y \
-  # ruby \
-  # ruby-dev \
-  # build-essential \
-  # libsqlite3-dev \
-  # zlib1g-dev \
-  # libxml2 \
-  # #
+  && apt-get install -y --no-install-recommends apt-utils dialog 2>&1 \
+  #
+  # Install useful tools and utilities
+  && apt-get install -y vim bash-completion lsb-release \
+  #
   # Install nodejs
   && apt-get install -y nodejs \
-  # # 
-  # # Install yarn
-  # && apt-get install -y curl apt-transport-https lsb-release \
-  # && curl -sS https://dl.yarnpkg.com/$(lsb_release -is | tr '[:upper:]' '[:lower:]')/pubkey.gpg | apt-key add - 2>/dev/null \
-  # && echo "deb https://dl.yarnpkg.com/$(lsb_release -is | tr '[:upper:]' '[:lower:]')/ stable main" | tee /etc/apt/sources.list.d/yarn.list \
-  # && apt-get update \
-  # && apt-get -y install --no-install-recommends yarn \
-  # #
-  # # Install debug tools
-  # && gem install \
-  # rake \
-  # ruby-debug-ide \
-  # debase \
-  # #
-  # # Install sinatra MVC components
-  # && gem install \
-  # rails \
-  # webdrivers \
-  # #
+  #
   # Install Heroku CLI
   && curl https://cli-assets.heroku.com/install.sh | sh \
-  # #
+  #
   # Create a non-root user to use if preferred - see https://aka.ms/vscode-remote/containers/non-root-user.
   && groupadd --gid $USER_GID $USERNAME \
   && useradd -s /bin/bash --uid $USER_UID --gid $USER_GID -m $USERNAME \

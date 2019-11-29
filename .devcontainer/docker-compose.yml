@@ -30,4 +30,4 @@ services:
       - "r4list-db-data:/var/lib/postgresql/data"
 
 volumes:
-    r4list-db-data:
+  r4list-db-data:

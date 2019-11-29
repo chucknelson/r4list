@@ -55,8 +55,7 @@ group :doc do
 end
 
 # Use ActiveModel has_secure_password
-# Stick with 3.x version
-gem 'bcrypt-ruby', '~> 3.0'
+gem 'bcrypt', '~> 3.0'
 
 # Use puma for app server
 gem 'puma'

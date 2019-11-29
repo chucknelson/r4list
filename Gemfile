@@ -5,7 +5,7 @@ ruby '2.3.8'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 # Using 4.1.x versions (don't want to automatically update to 4.x)
-gem 'rails', '~> 4.1.0'
+gem 'rails', '~> 4.2.0'
 
 group :production do
 	gem 'rails_12factor' #required for heroku rails 4 asset pipeline compatability

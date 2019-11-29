@@ -7,6 +7,11 @@ ruby '2.3.8'
 # Using 4.1.x versions (don't want to automatically update to 4.x)
 gem 'rails', '~> 4.2.0'
 
+group :development do
+  # cool interactive console that can be used if a page errors out
+  gem 'web-console', '3.3.0' # last release with Rails 4.2 support
+end
+
 group :production do
 	gem 'rails_12factor' #required for heroku rails 4 asset pipeline compatability
 end
